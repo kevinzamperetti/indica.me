@@ -26,8 +26,7 @@ export default class ProfileCollaboratorEdit extends Component {
             isCollaborator: '',
             bankDataId: '',
             bankAgency: '',
-            bankAccount: '',
-            disableButton: false
+            bankAccount: ''
         }
     }
 
@@ -45,6 +44,7 @@ export default class ProfileCollaboratorEdit extends Component {
             name: response.data.name,
             email: response.data.email,
             password: response.data.password,
+            repeatPassword: response.data.password,
             profile: response.data.profile,
             documentNumber: response.data.documentNumber,
             sectorCompany: response.data.sectorCompany,
@@ -57,30 +57,19 @@ export default class ProfileCollaboratorEdit extends Component {
 
     changeValuesState( evt ) {
         const { name, value } = evt.target
-        const { password, repeatPassword } = this.state
 		this.setState( {
 			[name]: value
         })
-        if ([name] == "repeatPassword" ) {
-            if ( password != repeatPassword && repeatPassword != '') {
-                toast.error(this.util.contentError('Senhas informadas são diferentes!'));
-                this.setState( {
-                    disableButton: true
-                })
-            } else {
-                this.setState( {
-                    disableButton: false
-                })
-            }
-        }
     }
 
     edit( evt ) {
         evt.preventDefault();
 		const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
-        const { name, email, password, profile, documentNumber, sectorCompany, 
+        const { name, email, password, repeatPassword, profile, documentNumber, sectorCompany, 
                 isCollaborator, bankDataId, bankAgency, bankAccount } = this.state
-        if ( name && email && password && documentNumber ) {
+        if (password != repeatPassword) {
+            toast.error(this.util.contentError('Senhas informadas são diferentes!'));
+        } else if ( name && email && password && documentNumber ) {
              API.put( `/user/${this.state.dataUserLogged.id}`, {
                 id: this.state.dataUserLogged.id,
                 name: name,
@@ -109,7 +98,7 @@ export default class ProfileCollaboratorEdit extends Component {
     }
 
     render() {
-        const { name, email, password, documentNumber, disableButton } = this.state
+        const { name, email, password, repeatPassword, documentNumber } = this.state
         return (
             <React.Fragment>
                 <Container>
@@ -172,7 +161,7 @@ export default class ProfileCollaboratorEdit extends Component {
                                                 <span className="text-danger">*</span> Repetir Senha
                                             </Label>
                                             <Col sm={8}>
-                                                <Input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repetir Senha..."
+                                                <Input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repetir Senha..." defaultValue={repeatPassword}
                                                        onBlur={ this.changeValuesState.bind( this ) } />
                                             </Col>
                                         </FormGroup>
@@ -208,10 +197,7 @@ export default class ProfileCollaboratorEdit extends Component {
                                 </CardBody>
                                 <CardFooter className="p-4 bt-0">
                                     <div className="d-flex">
-                                        {disableButton
-                                            ? <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) } disabled>Alterar</Button>
-                                            : <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) }>Alterar</Button>
-                                        } 
+                                        <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) }>Alterar</Button>
                                     </div>
                                 </CardFooter>
                             </Card>

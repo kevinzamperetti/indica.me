@@ -54,6 +54,10 @@ import ProfileAdministratorEdit from './Pages/Profile/ProfileAdministratorEdit';
 import ProfileExternalEdit from './Pages/Profile/ProfileExternalEdit';
 import ProfileCollaboratorEdit from './Pages/Profile/ProfileCollaboratorEdit';
 import AccountEdit from './Pages/Profile/AccountEdit/AccountEdit';
+import OpportunityExternalList from './Pages/Opportunity/List/OpportunityExternalList';
+import OpportunityCollaboratorList from './Pages/Opportunity/List/OpportunityCollaboratorList';
+import OpportunityExternalEdit from './Pages/Opportunity/Edit/OpportunityExternalEdit';
+import OpportunityCollaboratorEdit from './Pages/Opportunity/Edit/OpportunityCollaboratorEdit';
 
 //------ Route Definitions --------
 // eslint-disable-next-line no-unused-vars
@@ -84,6 +88,8 @@ export class RoutedContent extends React.Component {
                 <PrivateRoute path="/external/profile-details" exact component={ProfileExternalEdit} />
                 <PrivateRoute path="/external/account-edit" exact component={AccountEdit} />
                 <PrivateRoute path="/external/home" exact component={External} />
+                <PrivateRoute path="/external/opportunity-list" exact component={OpportunityExternalList} />
+                <PrivateRoute path="/external/opportunity/:id" exact component={OpportunityExternalEdit} />
                 <PrivateRoute path="/external/candidature" exact component={Candidature} />
                 <PrivateRoute path="/external/indication" exact component={Indication} />
                 <PrivateRoute path="/external/indication-list" exact component={IndicationExternalList} />
@@ -95,6 +101,8 @@ export class RoutedContent extends React.Component {
                 <PrivateRoute path="/collaborator/profile-details" exact component={ProfileCollaboratorEdit} />
                 <PrivateRoute path="/collaborator/account-edit" exact component={AccountEdit} />
                 <PrivateRoute path="/collaborator/home" exact component={Collaborator} />
+                <PrivateRoute path="/collaborator/opportunity-list" exact component={OpportunityCollaboratorList} />
+                <PrivateRoute path="/collaborator/opportunity/:id" exact component={OpportunityCollaboratorEdit} />
                 <PrivateRoute path="/collaborator/indication" exact component={Indication} />
                 <PrivateRoute path="/collaborator/indication-list" exact component={IndicationCollaboratorList} />
                 <PrivateRoute path="/collaborator/indication/:id" exact component={IndicationCollaboratorEdit} />
