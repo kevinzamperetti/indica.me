@@ -34,7 +34,7 @@ export default class CandidatureEdit extends Component {
 		const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
         const response = await API.get( `/candidature/${id}`, header )
         const responseHistory = await API.get( `/candidatureHistory/${response.data.id}`, header )
-        const responseKeyWord = await API.get( `/keyWord/opportunity/${response.data.opportunity.id}`, header )
+        const responseKeyWord = await API.get( `/keyWordCandidature/${response.data.id}`, header )
         this.setState( { 
             candidature: response.data,
             user: response.data.user,
