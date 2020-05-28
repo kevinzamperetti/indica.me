@@ -55,9 +55,9 @@ export class SidebarMiddleNav extends React.Component {
                         <SidebarMenu.Item title="Oportunidade" to='/administrator/opportunity' exact />
                         <SidebarMenu.Item title="Palavras Chave" to='/administrator/key-word' exact />
                     </SidebarMenu.Item>
+                    <SidebarMenu.Item icon={<i className="fa fa-fw fa-suitcase"></i>} title="Oportunidades" to='/administrator/opportunity-list' exact/>
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-group"></i>} title="Indicações" to='/administrator/indication-list' exact />
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-file-text"></i>} title="Candidaturas" to='/administrator/candidature-list' exact/>
-                    <SidebarMenu.Item icon={<i className="fa fa-fw fa-suitcase"></i>} title="Oportunidades" to='/administrator/opportunity-list' exact/>
                 </SidebarMenu >
             )
         } else if ( dataUserLogged.profile == "EXTERNAL" ) {
