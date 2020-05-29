@@ -183,9 +183,9 @@ export default class Util extends React.Component {
     } else if (status === 'NEW') {
         return "Nova"
     } else if (status === 'PRE_EVALUATION_OK') {
-        return "Pré-Avaliado"
+        return "Pré-avaliado"
     } else if (status === 'PRE_EVALUATION_NOK') {
-        return "Pré-Avaliado"
+        return "Pré-avaliado"
     } else if (status === 'HIRED') {
         return "Contratada"
     } else if (status === 'SENDING_BONUS') {
@@ -223,9 +223,9 @@ export default class Util extends React.Component {
     } else if (status === 'NEW') {
         return "Nova"
     } else if (status === 'PRE_EVALUATION_OK') {
-        return "Pré-Avaliado"
+        return "Pré-avaliado"
     } else if (status === 'PRE_EVALUATION_NOK') {
-        return "Pré-Avaliado"
+        return "Pré-avaliado"
     } else if (status === 'HIRED') {
         return "Contratada"
     } else if (status === 'DISCARDED') {
