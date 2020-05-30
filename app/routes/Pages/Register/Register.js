@@ -35,6 +35,7 @@ export default class Register extends Component {
 			name: '',
 			email: '',
 			password: '',
+			repeatPassword: '',
 			profileSelector: 'EXTERNAL',
 			documentNumber: '',
 			bankIdSelector: '',
@@ -73,8 +74,12 @@ export default class Register extends Component {
 
 	register( evt ) {
 		evt.preventDefault();
-		const { name, email, password, profileSelector, documentNumber, bankIdSelector, bankAgency, bankAccount } = this.state
-		 if ( name && email && password && profileSelector && documentNumber && bankIdSelector && bankAgency && bankAccount ) {
+		const { name, email, password, repeatPassword, profileSelector, documentNumber, 
+				bankIdSelector, bankAgency, bankAccount } = this.state
+		if (password != repeatPassword) {
+			toast.error(this.util.contentError('Senhas informadas são diferentes!'));
+		} else if ( name && email && password && profileSelector && documentNumber &&
+			        bankIdSelector && bankAgency && bankAccount ) {
 			API.post( '/user/register', {
 				name: name,
 				email: email,
@@ -131,7 +136,7 @@ export default class Register extends Component {
 							</FormGroup>
 							<FormGroup>
 								<Label for="repeatPassword">Repetir Senha</Label>
-								<Input type="password" name="password" id="repeatPassword" placeholder="Password..." className="bg-white" />
+								<Input type="password" name="repeatPassword" id="repeatPassword" placeholder="Password..." className="bg-white" />
 							</FormGroup>
 							<FormGroup>
 								<Label for="profileSelector">Perfil</Label>

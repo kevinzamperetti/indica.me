@@ -7,7 +7,7 @@ import Util from '../../../../components/Util/Util';
 import API from '../../../../services/api';
 import { Link } from 'react-router-dom';
 
-export default class OpportunityList extends Component {
+export default class OpportunityCollaboratorList extends Component {
     constructor( props ) {
         super( props )
         this.util = new Util();
@@ -22,7 +22,7 @@ export default class OpportunityList extends Component {
 
     listAllOpportunities = async () => {
         const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
-        const response = await API.get( '/opportunity', header )
+        const response = await API.get( '/opportunity?enabled=true&users=true', header )
         this.setState( { listAllOpportunities: response.data }  )
     }
 
@@ -36,10 +36,9 @@ export default class OpportunityList extends Component {
                   <Badge pill color={this.util.setEnabledColor(opportunity.enabled)}>
                       {this.util.setEnabledName(opportunity.enabled)}
                   </Badge>,
-                  <Link className="fa fa-search" to={`/administrator/opportunity/${opportunity.id}`} />
+                  <Link className="fa fa-search" to={`/collaborator/opportunity/${opportunity.id}`} />
                    ] )
             : []
-        
         const options = this.util.optionsMUIDataTable;
             
         return (

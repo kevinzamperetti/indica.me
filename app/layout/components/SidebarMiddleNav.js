@@ -55,9 +55,9 @@ export class SidebarMiddleNav extends React.Component {
                         <SidebarMenu.Item title="Oportunidade" to='/administrator/opportunity' exact />
                         <SidebarMenu.Item title="Palavras Chave" to='/administrator/key-word' exact />
                     </SidebarMenu.Item>
+                    <SidebarMenu.Item icon={<i className="fa fa-fw fa-suitcase"></i>} title="Oportunidades" to='/administrator/opportunity-list' exact/>
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-group"></i>} title="Indicações" to='/administrator/indication-list' exact />
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-file-text"></i>} title="Candidaturas" to='/administrator/candidature-list' exact/>
-                    <SidebarMenu.Item icon={<i className="fa fa-fw fa-suitcase"></i>} title="Oportunidades" to='/administrator/opportunity-list' exact/>
                 </SidebarMenu >
             )
         } else if ( dataUserLogged.profile == "EXTERNAL" ) {
@@ -65,6 +65,7 @@ export class SidebarMiddleNav extends React.Component {
                 // - Externo pode indicar e candidatar, ver listagem de acompanhamento de indicações e gráficos de indicações e candidaturas...
                 <SidebarMenu>
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-home"></i>} title="Início" to='/external/home' exact />
+                    <SidebarMenu.Item icon={<i className="fa fa-fw fa-suitcase"></i>} title="Oportunidades" to='/external/opportunity-list' exact/>
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-group"></i>} title="Indicações">
                         <SidebarMenu.Item title="Realizar" to='/external/indication' exact />
                         <SidebarMenu.Item title="Acompanhar" to='/external/indication-list' exact />
@@ -80,6 +81,7 @@ export class SidebarMiddleNav extends React.Component {
                 // - Colaborador só pode indicar, ver listagem de acompanhamento de indicações e gráficos de indicações...
                 <SidebarMenu>
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-home"></i>} title="Início" to='/collaborator/home' exact />
+                    <SidebarMenu.Item icon={<i className="fa fa-fw fa-suitcase"></i>} title="Oportunidades" to='/collaborator/opportunity-list' exact/>
                     <SidebarMenu.Item icon={<i className="fa fa-fw fa-group"></i>} title="Indicações">
                         <SidebarMenu.Item title="Realizar" to='/collaborator/indication' exact />
                         <SidebarMenu.Item title="Acompanhar" to='/collaborator/indication-list' exact />

@@ -160,6 +160,10 @@ export default class Util extends React.Component {
         return "primary"
     } else if (status === 'NEW') {
         return "warning"
+    } else if (status === 'PRE_EVALUATION_OK') {
+        return "success"
+    } else if (status === 'PRE_EVALUATION_NOK') {
+        return "danger"
     } else if (status === 'HIRED') {
         return "success"
     } else if (status === 'SENDING_BONUS') {
@@ -178,6 +182,10 @@ export default class Util extends React.Component {
         return "Em andamento"
     } else if (status === 'NEW') {
         return "Nova"
+    } else if (status === 'PRE_EVALUATION_OK') {
+        return "Pré-avaliado"
+    } else if (status === 'PRE_EVALUATION_NOK') {
+        return "Pré-avaliado"
     } else if (status === 'HIRED') {
         return "Contratada"
     } else if (status === 'SENDING_BONUS') {
@@ -196,6 +204,10 @@ export default class Util extends React.Component {
         return "primary"
     } else if (status === 'NEW') {
         return "warning"
+    } else if (status === 'PRE_EVALUATION_OK') {
+        return "success"
+    } else if (status === 'PRE_EVALUATION_NOK') {
+        return "danger"
     } else if (status === 'HIRED') {
         return "success"
     } else if (status === 'DISCARDED') {
@@ -210,6 +222,10 @@ export default class Util extends React.Component {
         return "Em andamento"
     } else if (status === 'NEW') {
         return "Nova"
+    } else if (status === 'PRE_EVALUATION_OK') {
+        return "Pré-avaliado"
+    } else if (status === 'PRE_EVALUATION_NOK') {
+        return "Pré-avaliado"
     } else if (status === 'HIRED') {
         return "Contratada"
     } else if (status === 'DISCARDED') {

@@ -34,7 +34,7 @@ export default class IndicationEdit extends Component {
 		const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
         const response = await API.get( `/indication/${id}`, header )
         const responseHistory = await API.get( `/indicationHistory/${response.data.id}`, header )
-        const responseKeyWord = await API.get( `/keyWord/opportunity/${response.data.opportunity.id}`, header )
+        const responseKeyWord = await API.get( `/keyWordIndication/${response.data.id}`, header )
         this.setState( { 
             indication: response.data,
             user: response.data.user,
