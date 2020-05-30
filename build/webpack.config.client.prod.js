@@ -8,7 +8,7 @@ var CircularDependencyPlugin = require('circular-dependency-plugin');
 
 var config = require('./../config');
 
-var BASE_PATH = process.env.BASE_PATH || '/';
+var BASE_PATH = process.env.REACT_APP_API_URL || '/';
 
 module.exports = {
     devtool: 'inline-source-map',
