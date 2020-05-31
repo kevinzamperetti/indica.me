@@ -46,7 +46,7 @@ export default class Login extends Component {
         evt.preventDefault();
         const { email, password, isCollaboratorSelector, errorMessage } = this.state
         if ( email  && password ) {
-            API.post( 'http://localhost:8080/login', {
+            API.post( 'https://indicame-api.herokuapp.com/login', {
                     email: email,
 					password: password,
 					isCollaborator: isCollaboratorSelector

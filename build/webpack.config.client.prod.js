@@ -8,7 +8,7 @@ var CircularDependencyPlugin = require('circular-dependency-plugin');
 
 var config = require('./../config');
 
-var BASE_PATH = "https://indicame-api.herokuapp.com/api" || '/';
+var BASE_PATH = process.env.BASE_PATH || '/';
 console.log("BASE_PATH" + BASE_PATH)
 
 module.exports = {
