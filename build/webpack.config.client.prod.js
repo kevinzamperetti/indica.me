@@ -8,8 +8,8 @@ var CircularDependencyPlugin = require('circular-dependency-plugin');
 
 var config = require('./../config');
 
-var BASE_PATH = process.env.BASE_PATH || '/api';
-console.log(BASE_PATH)
+var BASE_PATH = process.env.BASE_PATH || '/';
+console.log("BASE_PATH" + BASE_PATH)
 
 module.exports = {
     devtool: 'inline-source-map',
