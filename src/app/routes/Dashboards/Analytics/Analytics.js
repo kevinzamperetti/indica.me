@@ -97,7 +97,7 @@ export class Analytics extends React.Component {
                 <Container fluid={ false }>
                     <div className="d-flex mt-3 mb-5">
                         <HeaderMain 
-                            title="Gráficos"
+                            title="Informações"
                             className="mt-0"
                         />
                     </div>
