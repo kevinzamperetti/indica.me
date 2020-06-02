@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Container, FloatGrid as Grid, Card, CardBody, Progress, CardHeader } from '../../../components';
+import { Container, FloatGrid as Grid, Card, CardBody, Progress, CardHeader, Row, Col, Table, Badge } from '../../../components';
 import { applyColumn } from '../../../components/FloatGrid';
 import { HeaderMain } from "../../components/HeaderMain";
 import classes from './Administrator.scss';
@@ -119,9 +119,98 @@ export class Administrator extends React.Component {
                             className="mt-0"
                         />
                     </div>
+                    <Row className="mb-5">
+                        <Col lg={ 3 }>
+                            <div className="hr-text hr-text-left my-2">
+                                <span>Oportunidades</span>
+                            </div>
+                            <Table size="sm">
+                                <tbody>
+                                    <tr>
+                                        <td className="text-inverse bt-0">Abertas</td>
+                                        <td className="text-right bt-0">
+                                            <Badge color="success" pill>{qtyOpportunitiesEnabled}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Finalizadas</td>
+                                        <td className="text-right">
+                                            <Badge color="secondary" pill>{qtyOpportunitiesDisabled}</Badge>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col lg={ 3 }>
+                            <div className="hr-text hr-text-left my-2">
+                                <span>Indicações</span>
+                            </div>
+                            <Table size="sm">
+                                <tbody>
+                                    <tr>
+                                        <td className="text-inverse bt-0">Abertas</td>
+                                        <td className="text-right bt-0">
+                                            <Badge color="red" pill>{qtyIndicationsNew}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Em andamento</td>
+                                        <td className="text-right">
+                                            <Badge color="primary" pill>{qtyIndicationsInProgress}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Contratadas</td>
+                                        <td className="text-right">
+                                            <Badge color="success" pill>{qtyIndicationsHired}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Descartadas</td>
+                                        <td className="text-right">
+                                            <Badge color="secondary" pill>{qtyIndicationsDiscarded}</Badge>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                        <Col lg={ 3 }>
+                            <div className="hr-text hr-text-left my-2">
+                                <span>Candidaturas</span>
+                            </div>
+                            <Table size="sm">
+                                <tbody>
+                                    <tr>
+                                        <td className="text-inverse bt-0">Abertas</td>
+                                        <td className="text-right bt-0">
+                                            <Badge color="red" pill>{qtyCandidaturiesNew}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Em andamento</td>
+                                        <td className="text-right">
+                                            <Badge color="primary" pill>{qtyCandidaturiesInProgress}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Contratadas</td>
+                                        <td className="text-right">
+                                            <Badge color="success" pill>{qtyCandidaturiesHired}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Descartadas</td>
+                                        <td className="text-right">
+                                            <Badge color="secondary" pill>{qtyCandidaturiesDiscarded}</Badge>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
+                    </Row>
                 </Container>
 
-                <Grid>
+                {/* <Grid>
                     <Grid.Row
                         onLayoutChange={ layouts => this.setState({ layouts }) }
                         columnSizes={ this.state.layouts }
@@ -238,7 +327,7 @@ export class Administrator extends React.Component {
                             </Card>
                         </Grid.Col>
                     </Grid.Row>
-                </Grid>
+                </Grid> */}
             </React.Fragment>
         );
     }

@@ -120,9 +120,36 @@ export class External extends React.Component {
                                 </tbody>
                             </Table>
                         </Col>
+                        <Col lg={ 3 }>
+                            <div className="hr-text hr-text-left my-2">
+                                <span>Indicações realizadas por você</span>
+                            </div>
+                            <Table size="sm">
+                                <tbody>
+                                    <tr>
+                                        <td className="text-inverse">Em andamento</td>
+                                        <td className="text-right">
+                                            <Badge color="primary" pill>{qtyIndicationsInProgressByUser}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Contratadas</td>
+                                        <td className="text-right">
+                                            <Badge color="success" pill>{qtyIndicationsHiredByUser}</Badge>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td className="text-inverse">Descartadas</td>
+                                        <td className="text-right">
+                                            <Badge color="red" pill>{qtyIndicationsDiscardedByUser}</Badge>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </Col>
                     </Row>
                 </Container>
-                <Grid>
+                {/* <Grid>
                     <Grid.Row
                         onLayoutChange={ layouts => this.setState({ layouts }) }
                         columnSizes={ this.state.layouts }
@@ -163,7 +190,7 @@ export class External extends React.Component {
                             </Card>
                         </Grid.Col>
                     </Grid.Row>
-                </Grid>
+                </Grid> */}
             </React.Fragment>
         );
     }
