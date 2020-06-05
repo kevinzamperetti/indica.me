@@ -307,7 +307,7 @@ export default class OpportunityEdit extends Component {
                                         {/* <div className="l-flex">
                                             <Button color='secondary' className="ml-auto px-4" onClick={ this.save.bind( this ) }>Excluir</Button>
                                         </div> */}
-                                        <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) }>Alterar</Button>
+                                        <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) }>Salvar</Button>
                                     </div>
                                 </CardFooter>
                             </Card>

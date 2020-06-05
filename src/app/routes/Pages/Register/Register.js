@@ -154,11 +154,12 @@ export default class Register extends Component {
 									tag={ MaskedInput }
 									name="documentNumber"
 									id="documentNumber"
+									className="bg-white"
 								/>
 							</FormGroup>
 							<FormGroup>
 								<Label for="bankIdSelector">Banco</Label>
-								<CustomInput type="select" name="bankIdSelector" id="bankIdSelector" onChange={ this.changeValuesStateBank.bind( this ) } >
+								<CustomInput type="select" name="bankIdSelector" id="bankIdSelector" onChange={ this.changeValuesStateBank.bind( this ) } className="bg-white">
 									<option value="" selected>Selecione seu banco...</option>
 									{ listBanks.length > 0 ?
 										<React.Fragment>

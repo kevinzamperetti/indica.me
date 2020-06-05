@@ -116,7 +116,7 @@ export default class OpportunityBonusLevel extends Component {
     }
 
     render() {
-        const { listOpportunityBonusLevel, name, bonusValue } = this.state
+        const { listOpportunityBonusLevel, name, bonusValue, edit } = this.state
         const columns = ["Nome", "Valor", "Situação", "", ""];
         const data = listOpportunityBonusLevel.length > 0
                         ? listOpportunityBonusLevel.map( ( opportunityBonusLevel ) => 
@@ -196,7 +196,11 @@ export default class OpportunityBonusLevel extends Component {
                                 </CardBody>
                                 <CardFooter className="p-4 bt-0">
                                     <div className="d-flex">
-                                        <Button color='primary' className="ml-auto px-4" onClick={ this.save.bind( this ) }>Cadastrar</Button>
+                                        {
+                                            edit
+                                            ? <Button color='primary' className="ml-auto px-4" onClick={ this.save.bind( this ) }>Salvar</Button>
+                                            : <Button color='primary' className="ml-auto px-4" onClick={ this.save.bind( this ) }>Cadastrar</Button>
+                                        }
                                     </div>
                                 </CardFooter>
                             </Card>

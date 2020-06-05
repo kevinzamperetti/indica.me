@@ -130,11 +130,6 @@ export default class IndicationCollaboratorEdit extends Component {
                                         </FormGroup>                                                
                                     </Form>
                                 </CardBody>
-                                {/* <CardFooter className="p-3 bt-0">
-                                    <div className="d-flex">
-                                        <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) }>Alterar</Button>
-                                    </div>
-                                </CardFooter> */}
                             </Card>
                         </Col>
                         <Col lg={ 6 }>

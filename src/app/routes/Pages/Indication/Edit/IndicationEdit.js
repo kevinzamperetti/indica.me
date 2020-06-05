@@ -191,7 +191,7 @@ export default class IndicationEdit extends Component {
                                 </CardBody>
                                 <CardFooter className="p-3 bt-0">
                                     <div className="d-flex">
-                                        <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) }>Alterar</Button>
+                                        <Button color='primary' className="ml-auto px-4" onClick={ this.edit.bind( this ) }>Salvar</Button>
                                     </div>
                                 </CardFooter>
                             </Card>

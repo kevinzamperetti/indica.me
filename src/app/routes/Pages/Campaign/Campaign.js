@@ -116,7 +116,7 @@ export default class Campaign extends Component {
     }
 
     render() {
-        const { listCampaign, name, expirationDate } = this.state
+        const { listCampaign, name, expirationDate, edit } = this.state
         const columns = ["Nome", "Data de Expiração", "Situação", "", ""];
         const data = listCampaign.length > 0
                         ? listCampaign.map( ( campaign ) => 
@@ -192,7 +192,11 @@ export default class Campaign extends Component {
                                 </CardBody>
                                 <CardFooter className="p-4 bt-0">
                                     <div className="d-flex">
-                                        <Button color='primary' className="ml-auto px-4" onClick={ this.save.bind( this ) }>Cadastrar</Button>
+                                        {
+                                            edit
+                                            ? <Button color='primary' className="ml-auto px-4" onClick={ this.save.bind( this ) }>Salvar</Button>
+                                            : <Button color='primary' className="ml-auto px-4" onClick={ this.save.bind( this ) }>Cadastrar</Button>
+                                        }
                                     </div>
                                 </CardFooter>
                             </Card>
