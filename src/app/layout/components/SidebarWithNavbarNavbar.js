@@ -34,9 +34,9 @@ export const SidebarWithNavbarNavbar = () => (
                             <SidebarTrigger/>
                         </NavItem>
                         <NavItem className="navbar-brand d-lg-none">
-                            <Link to="/">
+                            {/* <Link to="/"> */}
                                 <LogoThemed />
-                            </Link>
+                            {/* </Link> */}
                         </NavItem>
                     </Nav>
 

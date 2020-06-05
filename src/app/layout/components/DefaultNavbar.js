@@ -20,9 +20,9 @@ export const DefaultNavbar = () => (
                 <SidebarTrigger/>
             </NavItem>
             <NavItem className="navbar-brand d-lg-none">
-                <Link to="/">
+                {/* <Link to="/"> */}
                     <LogoThemed checkBackgroundMenu/>
-                </Link>
+                {/* </Link> */}
             </NavItem>
             {/* <NavItem className="d-none d-md-block">
                 <span className="navbar-text">

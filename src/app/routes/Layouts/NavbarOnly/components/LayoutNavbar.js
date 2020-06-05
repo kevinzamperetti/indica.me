@@ -31,9 +31,9 @@ import { LogoThemed } from
 export const LayoutNavbar = () => (
     <React.Fragment>
         <Navbar light expand="lg" themed>
-            <Link to="/" className="navbar-brand mr-0 mr-sm-3">
+            {/* <Link to="/" className="navbar-brand mr-0 mr-sm-3"> */}
                 <LogoThemed className="mb-1" checkBackground />
-            </Link>
+            {/* </Link> */}
 
             <Nav pills>
                 <NavItem>
