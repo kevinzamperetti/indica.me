@@ -47,10 +47,10 @@ export default class CampaignEdit extends Component {
 		evt.preventDefault();
         const { name, expirationDate, enabled } = this.state
 		if ( name && expirationDate ) {
-            const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
+            //const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
 			API.post( '/campaign', {
                 name: name,
-                expirationDate: expirationDateFormatted,
+                expirationDate: expirationDate,
                 enabled: enabled
 			} ).then( response => {
                 toast.success(this.util.contentSuccess());
@@ -104,12 +104,14 @@ export default class CampaignEdit extends Component {
                                             </Label>
                                             <Col sm={9}>
                                                 <Input
-                                                    mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
-                                                    placeholder='01/01/1970'
-                                                    tag={ MaskedInput }
+                                                    // mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
+                                                    // placeholder='01/01/1970'
+                                                    // tag={ MaskedInput }
                                                     name="expirationDate"
                                                     id="expirationDate"
-                                                    onBlur={ this.changeValuesState.bind( this ) }/>
+                                                    onBlur={ this.changeValuesState.bind( this ) }
+                                                    type="date"
+                                                    required/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>

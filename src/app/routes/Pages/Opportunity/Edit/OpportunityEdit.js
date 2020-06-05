@@ -81,7 +81,8 @@ export default class OpportunityEdit extends Component {
             campaignIdSelector: response.data.campaign,
             opportunityBonusLevelIdSelector:response.data.bonusLevel,
             experienceLevelSelector: response.data.experienceLevel,
-            expirationDate: moment( response.data.expirationDate, 'YYYY-MM-DD',true).format('DD/MM/YYYY'),
+//            expirationDate: moment( response.data.expirationDate, 'YYYY-MM-DD',true).format('DD/MM/YYYY'),
+            expirationDate: response.data.expirationDate,
             automaticEvaluationQuantity: response.data.automaticEvaluationQuantity
          }  )
     }
@@ -133,7 +134,7 @@ export default class OpportunityEdit extends Component {
                 expirationDate, automaticEvaluationQuantity, enabled, opportunity } = this.state
         if ( ( name && description && campaignIdSelector && 
              expirationDate && automaticEvaluationQuantity ) && (automaticEvaluationQuantity > 0 ) ) {
-            const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
+            //const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
             API.put( `/opportunity/${opportunity.id}`, {
                 id: opportunity.id,
                 name: name,
@@ -145,7 +146,7 @@ export default class OpportunityEdit extends Component {
                     id: opportunityBonusLevelIdSelector.id
                 },
                 experienceLevel: experienceLevelSelector,
-                expirationDate: expirationDateFormatted,
+                expirationDate: expirationDate,
                 automaticEvaluationQuantity: automaticEvaluationQuantity,
                 enabled: enabled
             }, header ).then( response => {
@@ -269,14 +270,17 @@ export default class OpportunityEdit extends Component {
                                             </Label>
                                             <Col sm={9}>
                                                 <Input
-                                                    mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
-                                                    placeholder='01/01/1970'
-                                                    tag={ MaskedInput }
+                                                    // mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
+                                                    // placeholder='01/01/1970'
+                                                    // tag={ MaskedInput }
                                                     id="expirationDate"
                                                     name="expirationDate"
-                                                    value={ moment(opportunity.expirationDate, 'YYYY-MM-DD', true).format('DD/MM/YYYY') }
+                                                    //value={ moment(opportunity.expirationDate, 'YYYY-MM-DD', true).format('DD/MM/YYYY') }
+                                                    defaultValue={ opportunity.expirationDate }
                                                     // defaultValue={opportunity.expirationDate}
-                                                    onBlur={ this.changeValuesState.bind( this ) }/>
+                                                    onChange={ this.changeValuesState.bind( this ) }
+                                                    type="date"
+                                                    required/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>

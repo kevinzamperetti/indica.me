@@ -60,10 +60,10 @@ export default class Campaign extends Component {
         const { idCampaign, name, expirationDate, enabled, edit } = this.state
         const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
 		if ( name && expirationDate && !edit ) {
-            const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
+            //const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
 			API.post( '/campaign', {
                 name: name,
-                expirationDate: expirationDateFormatted,
+                expirationDate: expirationDate,
                 enabled: enabled
 			}, header ).then( response => {
                 toast.success(this.util.contentSuccess());
@@ -74,11 +74,11 @@ export default class Campaign extends Component {
                 toast.error(this.util.contentError(error.response.data.message));
             } )
         } else if ( idCampaign && name && expirationDate && edit ) {
-            const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
+            //const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
 			API.put( `/campaign/${idCampaign}`, {
                 id: idCampaign,
                 name: name,
-                expirationDate: expirationDateFormatted,
+                expirationDate: expirationDate,
                 enabled: enabled
 			}, header ).then( response => {
                 toast.success(this.util.contentSuccess());
@@ -110,7 +110,8 @@ export default class Campaign extends Component {
             idCampaign: campaign.id,
             name: campaign.name,
             enabled: campaign.enabled,
-            expirationDate: moment(campaign.expirationDate, "YYYY-MM-DD", true).format("DD/MM/YYYY"),
+            //expirationDate: moment(campaign.expirationDate, "YYYY-MM-DD", true).format("DD/MM/YYYY"),
+            expirationDate: campaign.expirationDate,
             edit: true
          }  )
     }
@@ -166,13 +167,15 @@ export default class Campaign extends Component {
                                             </Label>
                                             <Col sm={9}>
                                                 <Input
-                                                    mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
-                                                    placeholder='01/01/1970'
-                                                    tag={ MaskedInput }
+                                                    // mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
+                                                    // placeholder='01/01/1970'
+                                                    // tag={ MaskedInput }
                                                     name="expirationDate"
                                                     id="expirationDate"
                                                     defaultValue={expirationDate}
-                                                    onBlur={ this.changeValuesState.bind( this ) }/>
+                                                    onChange={ this.changeValuesState.bind( this ) }
+                                                    type="date"
+                                                    required/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>

@@ -82,7 +82,7 @@ export default class Opportunity extends Component {
         
         if ( ( name && description && campaignIdSelector && opportunityBonusLevelIdSelector && 
              experienceLevelSelector && expirationDate && automaticEvaluationQuantity ) && (automaticEvaluationQuantity > 0) ) {
-             const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
+             //const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
             API.post( '/opportunity', {
                 name: name,
                 description: description,
@@ -93,7 +93,7 @@ export default class Opportunity extends Component {
                     id: opportunityBonusLevelIdSelector.id
                 },
                 experienceLevel: experienceLevelSelector,
-                expirationDate: expirationDateFormatted,
+                expirationDate: expirationDate,
                 automaticEvaluationQuantity: automaticEvaluationQuantity,
                 enabled: enabled
             }, header ).then( response => {
@@ -215,12 +215,14 @@ export default class Opportunity extends Component {
                                             </Label>
                                             <Col sm={9}>
                                                 <Input
-                                                    mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
-                                                    placeholder='01/01/1970'
-                                                    tag={ MaskedInput }
+                                                    // mask={ [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] }
+                                                    // placeholder='01/01/1970'
+                                                    // tag={ MaskedInput }
                                                     name="expirationDate"
                                                     id="expirationDate"
-                                                    onBlur={ this.changeValuesState.bind( this ) }/>
+                                                    onBlur={ this.changeValuesState.bind( this ) }
+                                                    type="date"
+                                                    required/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>
