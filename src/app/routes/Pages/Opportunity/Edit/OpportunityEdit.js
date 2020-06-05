@@ -131,9 +131,8 @@ export default class OpportunityEdit extends Component {
 		const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
         const { name, description, campaignIdSelector, opportunityBonusLevelIdSelector, experienceLevelSelector,
                 expirationDate, automaticEvaluationQuantity, enabled, opportunity } = this.state
-        if ( name && description && campaignIdSelector && 
-             expirationDate && automaticEvaluationQuantity ) {
- 
+        if ( ( name && description && campaignIdSelector && 
+             expirationDate && automaticEvaluationQuantity ) && (automaticEvaluationQuantity > 0 ) ) {
             const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
             API.put( `/opportunity/${opportunity.id}`, {
                 id: opportunity.id,
@@ -157,7 +156,11 @@ export default class OpportunityEdit extends Component {
                 toast.error(this.util.contentError(error.response.data.message));
             } )
         } else {
-            toast.error(this.util.errorFillFields());
+            if (automaticEvaluationQuantity <= 0) {
+                toast.error(this.util.contentError('Quantidade de Avaliação Automática inválida'));
+            } else {
+                toast.error(this.util.errorFillFields());
+            }
         }
     }
     
@@ -278,7 +281,7 @@ export default class OpportunityEdit extends Component {
                                         </FormGroup>
                                         <FormGroup row>
                                             <Label for="input" sm={3}>
-                                                Quantidade de Avaliação automática 
+                                                Quantidade de Avaliação Automática 
                                             </Label>
                                             <Col sm={9}>
                                                 <Input type="number" 

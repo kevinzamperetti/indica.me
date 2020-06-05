@@ -140,7 +140,7 @@ export default class OpportunityCollaboratorEdit extends Component {
                                         </FormGroup>
                                         <FormGroup row>
                                             <Label for="input" sm={3}>
-                                                Quantidade de Avaliação automática 
+                                                Quantidade de Avaliação Automática 
                                             </Label>
                                             <span>{opportunity.automaticEvaluationQuantity}</span>
                                         </FormGroup>

@@ -277,7 +277,7 @@ const WizardStep1 = () => (
                                 </FormGroup>
                                 <FormGroup row>
                                     <Label for="input" sm={3}>
-                                        Quantidade de Avaliação automática 
+                                        Quantidade de Avaliação Automática 
                                     </Label>
                                     <Col sm={9}>
                                         <Input type="number" name="automaticEvaluationQuantity" id="automaticEvaluationQuantity" placeholder=""/>

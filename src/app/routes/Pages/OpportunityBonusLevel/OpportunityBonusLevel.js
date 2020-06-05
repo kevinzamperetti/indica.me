@@ -53,7 +53,8 @@ export default class OpportunityBonusLevel extends Component {
 		evt.preventDefault();
         const { idOpportunityBonusLevel, name, bonusValue, enabled, edit } = this.state
         const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
-		if ( name && bonusValue && !edit ) {
+
+        if ( ( name && bonusValue && !edit ) && (bonusValue > 0) ) {
 			API.post( '/opportunityBonusLevel', {
                 name: name,
                 value: bonusValue.replace('.', ''),
@@ -73,8 +74,7 @@ export default class OpportunityBonusLevel extends Component {
 			.catch( error => {
                 toast.error(this.util.contentError(error.response.data.message));
             } )
-        } else if ( idOpportunityBonusLevel && name && bonusValue && edit ) {
-            console.log(bonusValue)
+        } else if ( ( idOpportunityBonusLevel && name && bonusValue && edit ) && (bonusValue > 0) ) {
 			API.put( `/opportunityBonusLevel/${idOpportunityBonusLevel}`, {
                 id: idOpportunityBonusLevel,
                 name: name,
@@ -89,7 +89,11 @@ export default class OpportunityBonusLevel extends Component {
                 toast.error(this.util.contentError(error.response.data.message));
             } )
         } else {
-            toast.error(this.util.errorFillFields());
+            if (bonusValue <= 0) {
+                toast.error(this.util.contentError('Valor da Bonificação inválido'));
+            } else {
+                toast.error(this.util.errorFillFields());
+            }
         }
     }
     
@@ -109,7 +113,7 @@ export default class OpportunityBonusLevel extends Component {
         this.setState( { 
             idOpportunityBonusLevel: opportunityBonusLevel.id,
             name: opportunityBonusLevel.name,
-            bonusValue: opportunityBonusLevel.value,
+            bonusValue: opportunityBonusLevel.value.toLocaleString('pt-BR'), 
             enabled: opportunityBonusLevel.enabled,
             edit: true
          }  )
@@ -156,8 +160,8 @@ export default class OpportunityBonusLevel extends Component {
                                                 Nome
                                             </Label>
                                             <Col sm={9}>
-                                                <Input type="text" name="name" id="name" placeholder="" defaultValue={name}
-                                                       onBlur={ this.changeValuesState.bind( this ) }/>
+                                                <Input type="text" name="name" id="name" placeholder="" value={this.state.name}
+                                                       onChange={ this.changeValuesState.bind( this ) }/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>
@@ -175,7 +179,7 @@ export default class OpportunityBonusLevel extends Component {
                                                         id="bonusValue" 
                                                         name="bonusValue"
                                                         value={bonusValue}
-                                                        onBlur={ this.changeValuesState.bind( this ) } />
+                                                        onChange={ this.changeValuesState.bind( this ) } />
                                                     <InputGroupAddon addonType="append">,00</InputGroupAddon>
                                                 </InputGroup>
                                             </Col> 

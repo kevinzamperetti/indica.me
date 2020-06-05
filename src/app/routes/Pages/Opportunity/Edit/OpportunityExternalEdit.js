@@ -139,7 +139,7 @@ export default class OpportunityExternalEdit extends Component {
                                         </FormGroup>
                                         <FormGroup row>
                                             <Label for="input" sm={3}>
-                                                Quantidade de Avaliação automática 
+                                                Quantidade de Avaliação Automática 
                                             </Label>
                                             <span>{opportunity.automaticEvaluationQuantity}</span>
                                         </FormGroup>
