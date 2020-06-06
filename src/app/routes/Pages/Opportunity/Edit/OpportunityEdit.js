@@ -6,7 +6,7 @@ import moment from 'moment';
 import { HeaderDemo } from "../../../components/HeaderDemo";
 import { 
     Button, Container, Row, Col, Card, CardBody, CardFooter, CustomInput, 
-    Form, FormGroup, Label, Input
+    Form, FormText, FormGroup, Label, Input
 } from '../../../../components';
 import Util from '../../../../components/Util/Util';
 import API from '../../../../services/api';
@@ -284,15 +284,16 @@ export default class OpportunityEdit extends Component {
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>
-                                            <Label for="input" sm={3}>
-                                                Quantidade de Avaliação Automática 
-                                            </Label>
+                                            <Label for="input" sm={3}>Quantidade de Avaliação Automática</Label>
                                             <Col sm={9}>
                                                 <Input type="number" 
                                                        name="automaticEvaluationQuantity" 
                                                        id="automaticEvaluationQuantity"
                                                        defaultValue={opportunity.automaticEvaluationQuantity}
                                                        onBlur={ this.changeValuesState.bind( this ) }/>
+                                                <FormText color="muted">
+                                                    Quantidade mínima de palavras que devem ser encontradas na pesquisa dos currículos recebidos
+                                                </FormText>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>

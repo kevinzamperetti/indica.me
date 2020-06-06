@@ -338,7 +338,7 @@ errorFillFields() {
                 Erro!
             </Media>
             <p>
-                Existem campos não preeenchidos.
+                Existem campos não preenchidos.
             </p>
         </Media>
     </Media>

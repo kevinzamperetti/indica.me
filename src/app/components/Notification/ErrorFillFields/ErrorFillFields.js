@@ -9,7 +9,7 @@ const ErrorFillFields = ({ closeToast }) => (
                 Erro!
             </Media>
             <p>
-                Existem campos não preeenchidos.
+                Existem campos não preenchidos.
             </p>
             <div className="d-flex mt-2">
                 <Button color="danger" onClick={() => { closeToast }}>
