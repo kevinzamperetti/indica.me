@@ -95,7 +95,7 @@ export default class OpportunityEdit extends Component {
 
     listAllOpportunityBonusLevel = async () => {
 		const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
-		const response = await API.get( '/opportunityBonusLevel', header )
+		const response = await API.get( '/opportunityBonusLevel?enabled=true', header )
 		this.setState( { listOpportunityBonusLevel: response.data }  )
     }
     
@@ -251,11 +251,13 @@ export default class OpportunityEdit extends Component {
                                                     { listOpportunityBonusLevel.length > 0 ?
                                                         <React.Fragment>
                                                             { listOpportunityBonusLevel.map( ( b ) => { 
-                                                                return(
-                                                                    <option key={b.id} id={ b.id } value={ b.id } 
+                                                                if (bonusLevel.id != b.id) {
+                                                                    return(
+                                                                        <option key={b.id} id={ b.id } value={ b.id } 
                                                                             onChange={ this.changeValuesStateOpportunityBonusLevel.bind( this ) }>{ b.name }
-                                                                    </option>
-                                                                )
+                                                                        </option>
+                                                                    )
+                                                                }
                                                             } ) }
                                                         </React.Fragment>
                                                     :
