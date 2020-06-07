@@ -160,7 +160,7 @@ export default class Register extends Component {
 							<FormGroup>
 								<Label for="bankIdSelector">Banco</Label>
 								<CustomInput type="select" name="bankIdSelector" id="bankIdSelector" onChange={ this.changeValuesStateBank.bind( this ) } className="bg-white">
-									<option value="" selected>Selecione seu banco...</option>
+									<option value="" selected>Selecione...</option>
 									{ listBanks.length > 0 ?
 										<React.Fragment>
 											{ listBanks.map( ( bank ) => { 

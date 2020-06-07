@@ -173,7 +173,7 @@ export default class Opportunity extends Component {
                                             <Col sm={9}>
                                                 <CustomInput type="select" name="campaignIdSelector" id="campaignIdSelector" 
                                                              onChange={ this.changeValuesStateCampaign.bind( this ) } >
-                                                    <option value="" selected>Nenhuma</option>
+                                                    <option value="" selected>Selecione...</option>
                                                     { listCampaign.length > 0 ?
                                                         <React.Fragment>
                                                             { listCampaign.map( ( campaign ) => { 
@@ -194,7 +194,7 @@ export default class Opportunity extends Component {
                                             <Col sm={9}>
                                                 <CustomInput type="select" name="opportunityBonusLevelIdSelector" id="opportunityBonusLevelIdSelector" 
                                                              onChange={ this.changeValuesStateOpportunityBonusLevel.bind( this ) } >
-                                                    <option value="" selected>Nenhuma</option>
+                                                    <option value="" selected>Selecione...</option>
                                                     { listOpportunityBonusLevel.length > 0 ?
                                                         <React.Fragment>
                                                             { listOpportunityBonusLevel.map( ( opportunityBonusLevel ) => { 

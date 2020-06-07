@@ -54,7 +54,7 @@ export default class OpportunityBonusLevel extends Component {
         const { idOpportunityBonusLevel, name, bonusValue, enabled, edit } = this.state
         const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
 
-        if ( ( name && bonusValue && !edit ) && (bonusValue > 0) ) {
+        if ( ( name && bonusValue && !edit ) && (bonusValue >= 0) ) {
 			API.post( '/opportunityBonusLevel', {
                 name: name,
                 value: bonusValue.replace('.', ''),
@@ -74,7 +74,7 @@ export default class OpportunityBonusLevel extends Component {
 			.catch( error => {
                 toast.error(this.util.contentError(error.response.data.message));
             } )
-        } else if ( ( idOpportunityBonusLevel && name && bonusValue && edit ) && (bonusValue > 0) ) {
+        } else if ( ( idOpportunityBonusLevel && name && bonusValue && edit ) && (bonusValue >= 0) ) {
 			API.put( `/opportunityBonusLevel/${idOpportunityBonusLevel}`, {
                 id: idOpportunityBonusLevel,
                 name: name,
@@ -89,7 +89,7 @@ export default class OpportunityBonusLevel extends Component {
                 toast.error(this.util.contentError(error.response.data.message));
             } )
         } else {
-            if (bonusValue <= 0) {
+            if (bonusValue < 0) {
                 toast.error(this.util.contentError('Valor da Bonificação inválido'));
             } else {
                 toast.error(this.util.errorFillFields());
