@@ -231,7 +231,7 @@ export default class Indication extends Component {
                                                 <Input
                                                     mask={ emailMask }
                                                     placeholder='nome@teste.com'
-                                                    tag={ MaskedInput }
+                                                    // tag={ MaskedInput }
                                                     id="indicationEmail"
                                                     name="indicationEmail"
                                                     onBlur={ this.changeValuesState.bind( this ) }/>

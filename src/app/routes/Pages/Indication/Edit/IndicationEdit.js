@@ -20,6 +20,7 @@ export default class IndicationEdit extends Component {
             indication: '',
             user: '',
             opportunity: '',
+            bonusLevel: '',
             listIndicationHistory: [],
             listKeyWords: []
 		}
@@ -39,10 +40,37 @@ export default class IndicationEdit extends Component {
             indication: response.data,
             user: response.data.user,
             opportunity: response.data.opportunity,
+            bonusLevel: response.data.opportunity.bonusLevel,
             listIndicationHistory: responseHistory.data,
             listKeyWords: responseKeyWord.data,
             indicationStatus: ''
          }  )
+         console.log(this.state.bonusLevel.value)
+    }
+
+    getListStatus(bonusLevel){
+        // const bonusLevel = this.state
+        console.log('bonusLevel.value: ' + bonusLevel.value)
+        if (bonusLevel.value == 0) {
+            return (
+                <React.Fragment>
+                    <option value="">Selecione...</option>
+                    <option value="IN_PROGRESS">Em andamento</option>
+                    <option value="HIRED">Indicação Contratada</option>
+                    <option value="DISCARDED">Indicação Descartada</option>
+                </React.Fragment>
+            )
+        } else if (bonusLevel.value != 0) {
+            return (
+                <React.Fragment>
+                    <option value="">Selecione...</option>
+                    <option value="IN_PROGRESS">Em andamento</option>
+                    <option value="HIRED">Indicação Contratada</option>
+                    <option value="BONUS_SENT">Bônus enviado</option>
+                    <option value="DISCARDED">Indicação Descartada</option>
+                </React.Fragment>
+            )
+        }
     }
 
     changeValuesState( evt ) {
@@ -102,7 +130,7 @@ export default class IndicationEdit extends Component {
 
     render() {
         const header = { headers: {Authorization: localStorage.getItem('Authorization') } }
-        const { indication, user, opportunity, listIndicationHistory, listKeyWords } = this.state
+        const { indication, user, opportunity, bonusLevel, listIndicationHistory, listKeyWords } = this.state
         const columns = ["Data/Hora", "Situação"];
         const data = listIndicationHistory.length > 0
                         ? listIndicationHistory.map( ( indicationHistory ) => 
@@ -180,11 +208,7 @@ export default class IndicationEdit extends Component {
                                             <span>{ this.util.setIndicationStatusName(indication.status) }</span>
                                             <CustomInput type="select" name="indicationStatus" id="indicationStatus"
                                                          onChange={ this.changeValuesState.bind( this ) }>
-                                                <option value="">Selecione...</option>
-                                                <option value="IN_PROGRESS">Em andamento</option>
-                                                <option value="HIRED">Indicação Contratada</option>
-                                                <option value="BONUS_SENT">Bônus enviado</option>
-                                                <option value="DISCARDED">Indicação Descartada</option>
+                                                { this.getListStatus(bonusLevel) }
                                             </CustomInput>
                                         </FormGroup>                                                
                                     </Form>

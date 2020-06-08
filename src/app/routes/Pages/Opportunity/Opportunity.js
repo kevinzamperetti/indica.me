@@ -81,7 +81,7 @@ export default class Opportunity extends Component {
                 expirationDate, automaticEvaluationQuantity, enabled } = this.state
         
         if ( ( name && description && campaignIdSelector && opportunityBonusLevelIdSelector && 
-             experienceLevelSelector && expirationDate && automaticEvaluationQuantity ) && (automaticEvaluationQuantity > 0) ) {
+             experienceLevelSelector && expirationDate && automaticEvaluationQuantity ) && (automaticEvaluationQuantity >= 0) ) {
              //const expirationDateFormatted = moment( expirationDate, 'DD/MM/YYYY',true).format("YYYY-MM-DD");
             API.post( '/opportunity', {
                 name: name,
@@ -106,7 +106,7 @@ export default class Opportunity extends Component {
                 toast.error(this.util.contentError(error.response.data.message));
             } )
         } else {
-            if (automaticEvaluationQuantity <= 0) {
+            if (automaticEvaluationQuantity < 0) {
                 toast.error(this.util.contentError('Quantidade de Avaliação Automática inválida'));
             } else {
                 toast.error(this.util.errorFillFields());
@@ -229,7 +229,7 @@ export default class Opportunity extends Component {
                                             <Label for="input" sm={3}>Quantidade de Avaliação Automática</Label>
                                             <Col sm={9}>
                                                 <Input type="number" name="automaticEvaluationQuantity" id="automaticEvaluationQuantity" placeholder=""
-                                                       onBlur={ this.changeValuesState.bind( this ) }/>
+                                                       onBlur={ this.changeValuesState.bind( this ) } defaultValue="0"/>
                                                 <FormText color="muted">
                                                     Quantidade mínima de palavras que devem ser encontradas na pesquisa dos currículos recebidos
                                                 </FormText>

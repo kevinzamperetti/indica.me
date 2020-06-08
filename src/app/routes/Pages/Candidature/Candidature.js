@@ -219,10 +219,11 @@ export default class Candidature extends Component {
                                                 <Input
                                                     mask={ emailMask }
                                                     placeholder='nome@teste.com'
-                                                    tag={ MaskedInput }
+                                                    // tag={ MaskedInput }
                                                     id="candidateEmail"
-                                                    value={ dataUserLogged.email }
-                                                    name="candidateEmail"/>
+                                                    defaultValue={ dataUserLogged.email }
+                                                    name="candidateEmail"
+                                                    onBlur={ this.changeValuesState.bind( this ) }/>
                                             </Col>
                                         </FormGroup>
                                         <FormGroup row>
