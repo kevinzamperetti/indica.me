@@ -138,24 +138,6 @@ export default class OpportunityCollaboratorEdit extends Component {
                                             </Label>
                                             <span>{ moment(opportunity.expirationDate, 'YYYY-MM-DD', true).format('DD/MM/YYYY') }</span>
                                         </FormGroup>
-                                        <FormGroup row>
-                                            <Label for="input" sm={3}>
-                                                Quantidade de Avaliação Automática 
-                                            </Label>
-                                            <span>{opportunity.automaticEvaluationQuantity}</span>
-                                        </FormGroup>
-                                        <FormGroup row>
-                                            <Label for="input" sm={3}>
-                                                Ativo
-                                            </Label>
-                                            <Col sm={9}>
-                                                <Toggle
-                                                    checked={ this.state.enabled }
-                                                    name='enabled'
-                                                    value='true'
-                                                    readOnly/>
-                                            </Col>
-                                        </FormGroup>
                                     </Form>
                                 </CardBody>
                             </Card>

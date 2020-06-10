@@ -28,14 +28,11 @@ export default class OpportunityCollaboratorList extends Component {
 
     render() {
         const { listAllOpportunities } = this.state
-        const columns = ["Oportunidade", "Campanha", "Nivel de Bonificação", "Data de Expiração", "Situação", ""];
+        const columns = ["Oportunidade", "Campanha", "Nivel de Bonificação", "Data de Expiração", ""];
         const data = listAllOpportunities.length > 0
             ? listAllOpportunities.map( ( opportunity ) =>
                 [ opportunity.name, opportunity.campaign.name, opportunity.bonusLevel.name,
                   moment( opportunity.expirationDate, "YYYY-MM-DD" , true).format('DD/MM/YYYY'),
-                  <Badge pill color={this.util.setEnabledColor(opportunity.enabled)}>
-                      {this.util.setEnabledName(opportunity.enabled)}
-                  </Badge>,
                   <Link className="fa fa-search" to={`/collaborator/opportunity/${opportunity.id}`} />
                    ] )
             : []
