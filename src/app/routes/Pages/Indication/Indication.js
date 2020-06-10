@@ -30,7 +30,8 @@ export default class Indication extends Component {
             imageName: '',
             fileNameAttachment: '',
             fileDownloadUriAttachment: '',
-            fileTypeAttachment: ''
+            fileTypeAttachment: '', 
+            disabled: false
 		}
     }
 
@@ -115,6 +116,7 @@ export default class Indication extends Component {
                 image, fileNameAttachment, fileDownloadUriAttachment, fileTypeAttachment } = this.state
         if ( opportunityIdSelector && listOpportunities && indicationName &&
                 indicationPhoneNumber && indicationEmail && status && dataUserLogged && image ) {
+                this.setState( { disabled: true } )
                 API.post( '/indication', {  
                     user: {
                         id: dataUserLogged.id
@@ -132,19 +134,22 @@ export default class Indication extends Component {
                     fileTypeAttachment: fileTypeAttachment
             }, header )
             .then( response => {
+                this.setState( { disabled: false } )
                 toast.success(this.util.contentSuccess());
                 // console.log( response.data )
             } )
             .catch( error => {
+                this.setState( { disabled: false } )
                 toast.error(this.util.contentError(error.response.data.message));
             } )
         } else {
+            this.setState( { disabled: false } )
             toast.error(this.util.errorFillFields());
         }
     }
     
     render() {
-        const { listOpportunities, dataUserLogged } = this.state
+        const { listOpportunities, dataUserLogged, disabled } = this.state
         return (
             <React.Fragment>
                 <Container>
@@ -253,7 +258,11 @@ export default class Indication extends Component {
                                 </CardBody>
                                 <CardFooter className="p-4 bt-0">
                                     <div className="d-flex">
-                                        <Button color='primary' className="ml-auto px-4" onClick={ this.uploadAttachment.bind( this ) }>Indicar</Button>
+                                        {disabled ? 
+                                            <Button color='primary' className="ml-auto px-4" onClick={ this.uploadAttachment.bind( this ) } disabled={disabled}>Indicando...</Button>
+                                            :
+                                            <Button color='primary' className="ml-auto px-4" onClick={ this.uploadAttachment.bind( this ) } disabled={disabled}>Indicar</Button>
+                                        }
                                     </div>
                                 </CardFooter>
                             </Card>

@@ -30,7 +30,8 @@ export default class Candidature extends Component {
             imageName: '',
             fileNameAttachment: '',
             fileDownloadUriAttachment: '',
-            fileTypeAttachment: ''
+            fileTypeAttachment: '', 
+            disabled: false
         }
     }
 
@@ -114,6 +115,7 @@ export default class Candidature extends Component {
                 image, fileNameAttachment, fileDownloadUriAttachment, fileTypeAttachment } = this.state
         if ( opportunityIdSelector && listOpportunities && candidatePhoneNumber && 
              status && dataUserLogged && image ) {
+            this.setState( { disabled: true } )
             API.post( '/candidature', {
                 user: {
                     id: dataUserLogged.id
@@ -131,19 +133,22 @@ export default class Candidature extends Component {
                 fileTypeAttachment: fileTypeAttachment
             }, header )
             .then( response => {
+                this.setState( { disabled: false } )
                 toast.success(this.util.contentSuccess());
                 // console.log( response.data )
             } )
             .catch( error => {
+                this.setState( { disabled: false } )
                 toast.error(this.util.contentError(error.response.data.message));
             } )
         } else {
+            this.setState( { disabled: false } )
             toast.error(this.util.errorFillFields());
         }
     }    
 
     render() {
-        const { listOpportunities, dataUserLogged } = this.state
+        const { listOpportunities, dataUserLogged, disabled } = this.state
         return (
             <React.Fragment>
                 <Container>
@@ -242,7 +247,11 @@ export default class Candidature extends Component {
                                 </CardBody>
                                 <CardFooter className="p-4 bt-0">
                                     <div className="d-flex">
-                                        <Button color='primary'className="ml-auto px-4" onClick={ this.uploadAttachment.bind( this ) }>Enviar</Button>
+                                        {disabled ? 
+                                            <Button color='primary'className="ml-auto px-4" onClick={ this.uploadAttachment.bind( this ) } disabled={disabled}>Enviando...</Button>
+                                            :
+                                            <Button color='primary'className="ml-auto px-4" onClick={ this.uploadAttachment.bind( this ) } disabled={disabled}>Enviar</Button>
+                                        }
                                     </div>
                                 </CardFooter>
                             </Card>
