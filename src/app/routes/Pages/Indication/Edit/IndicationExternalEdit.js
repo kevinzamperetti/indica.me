@@ -42,7 +42,7 @@ export default class IndicationExternalEdit extends Component {
     downloadFile = async ( evt, i ) => {
         // const FileDownload = require("js-file-download");
         var fileDownload = require('react-file-download');
-        await API.get(`/file/downloadFile/${evt.fileNameAttachment}`,
+        await API.get(`/file/indication/downloadFile/${evt.fileNameAttachment}`,
                         { responseType: 'arraybuffer',
                           headers: { Authorization: localStorage.getItem('Authorization')} } )
         .then( response => {
